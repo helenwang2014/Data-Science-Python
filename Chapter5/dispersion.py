@@ -29,9 +29,10 @@ print "variance is: ", variance(num_friends)
 
 
 def standard_deviation(x):
-	return float(math.sqrt(x))
+	return math.sqrt(x)
 
 print "standard deviation is: ", standard_deviation(variance(num_friends))
+
 
 
 def quantile(x, p):
@@ -55,11 +56,22 @@ def correlation(x, y):
 	stdev_x = standard_deviation(x)
 	stdev_y = standard_deviation(y)
 	if stdev_x >0 and stdev_y > 0:
-		return float(covariance(x, y)/stdev_x/stdev_y)
+		return (covariance(x, y)/stdev_x/stdev_y)
 	else:
 		return 0 
 print "correlation is: ", correlation(num_friends, daily_minutes)
 
+
+
+# Correlation with an outlier
+outlier = num_friends.index(100)
+num_friends_good = [x for i, x in enumerate(num_friends)
+					if i != outlier]
+
+daily_minutes_good = [x for i, x in enumerate(daily_minutes) 
+					  if i != outlier]
+
+correlation(num_friends_good, daily_minutes_good)
 
 
 
