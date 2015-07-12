@@ -39,3 +39,5 @@ def inverse_normal_cdf(p, mu=0, sigma=1, tolerance=0.00001):
 	return mid_z
 
 print inverse_normal_cdf(p=0.99, mu=0, sigma=1, tolerance=0.00001)
+
+
