@@ -16,3 +16,4 @@ plt.plot(xs, [normal_pdf(x,mu=-1) for x in xs],'-.', label = 'mu=-1,sigma=1')
 plt.legend()
 plt.title("Various Normal pdfs")
 plt.show()
+
