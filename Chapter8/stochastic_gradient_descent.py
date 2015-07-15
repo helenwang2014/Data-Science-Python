@@ -1,4 +1,4 @@
-#iterate through our data in a random order
+  #iterate through our data in a random order
 
 def in_random_order(data):
 	#generator that returns the elements of data in random order
