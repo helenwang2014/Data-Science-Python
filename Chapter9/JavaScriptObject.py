@@ -15,3 +15,6 @@ deserialized = json.loads(serialized)
 if "data science" in deserialized["topics"]:
 	print deserialized
 
+
+
+
