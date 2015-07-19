@@ -51,14 +51,14 @@ def parse_dict(input_dict, parser_dict):
 import datetime
 from collections import defaultdict
 
-
+'''
 data = [
 		{'closing_price': 102.06,
 		'date': datetime.datetime(2014, 8, 29, 0, 0),
 		'symbol': 'AAPL'}, 
 		#...
 		]
-
+'''
 max_aapl_price = max(row["closing_price"]
 					 for row in data
 					 	if row["symbol"] == "AAPL")
