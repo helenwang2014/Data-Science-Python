@@ -42,7 +42,7 @@ def get_row(A, i):
     
 def get_column(A, j):
     return [A_i[j] for A_i in A]
-
+l 0
 def shape(A):
     num_rows = len(A)
     num_cols = len(A[0]) if A else 0
