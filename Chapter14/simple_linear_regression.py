@@ -5,6 +5,11 @@ num_friends = [100.0,49,41,40,25,34,4, 3, 2, 1, 1, 7,  7,  8,  8]
 
 daily_minutes =[60,34,3,42,23,36,15,47,49,45,23,32, 34, 67, 89 ]
 
+
+outlier = num_friends.index(100)
+num_friends_good = [x for i, x in enumerate(num_friends)]
+daily_minutes_good = [x for i, x in enumerate(daily_minutes)if i != outlier]
+
 def data_range(x):
 	return max(x) - min(x)
 
@@ -29,7 +34,7 @@ print "variance is: ", variance(num_friends)
 
 
 def standard_deviation(x):
-	return float(math.sqrt(x))
+	return math.sqrt(variance(x))
 
 
 
@@ -50,7 +55,7 @@ def covariance(x, y):
 
 
 def correlation(x, y):
-	stdev_x = float(standard_deviation(x))
+	stdev_x = standard_deviation(x)
 	stdev_y = standard_deviation(y)
 	if stdev_x >0 and stdev_y > 0:
 		return (covariance(x, y)/stdev_x/stdev_y)
@@ -58,9 +63,7 @@ def correlation(x, y):
 		return 0 
 
 
-outlier = num_friends.index(100)
-num_friends_good = [x for i, x in enumerate(num_friends)]
-daily_minutes_good = [x for i, x in enumerate(daily_minutes)if i != outlier]
+
 
 def predict(alpha, beta, x_i):
 	return beta * x_i + alpha
@@ -102,5 +105,33 @@ def r_squared(alpha, beta, x, y):
 				total_sum_of_squares(y))
 
 r_squared(alpha, beta, num_friends_good, daily_minutes_good)
+
+
+
+
+# ========
+# using Gradient Descent
+def squared_error(x_i, y_i, theta):
+	alpha, beta = theta
+	return error(alpha, beta, x_i, y_i) ** 2
+
+def squared_error_gradient(x_i, y_i, theta):
+	alpha, beta = theta
+	return [-2 * error(alpha, beta, x_i, y_i), 
+	 		-2 * error(alpha, beta, x_i, y_i) * x_i]
+
+# choose random value to start
+random.seed(0)
+theta = [random.random(), random.random()]
+alpha, beta = minimize_stochastic(squared_error, 
+								  squared_error_gradient, 
+								  num_friends_good, 
+								  daily_minutes_good,
+								  theta, 
+								  0.0001)
+print alpha, beta
+
+
+
 
 
