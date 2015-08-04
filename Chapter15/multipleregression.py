@@ -79,3 +79,8 @@ random.seed(0)
 beta = estimate_beta(x, daily_minutes_good) 
 
 print beta
+
+
+
+
+
